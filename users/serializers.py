@@ -4,6 +4,7 @@ from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from rest_framework.validators import UniqueValidator
+from .models import Profile
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -54,3 +55,9 @@ class LoginSerializer(serializers.Serializer):
         raise serializers.ValidationError(
             {'error': '정보가 올바르지 않습니다.'}
         )
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('nickname', 'image', 'is_author')
