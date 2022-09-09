@@ -38,7 +38,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
-        token = Token.objects.create(user=user)
+        token = Token.objects.create(user=user)  # token 생성
         return user
 
 
@@ -60,4 +60,8 @@ class LoginSerializer(serializers.Serializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
+<<<<<<< HEAD
         fields = ('nickname', 'image', 'is_author')
+=======
+        fields = ('nickname', 'is_author', 'image')
+>>>>>>> e9ae3b523566da25597a16b68da2b86a584fd8e0
