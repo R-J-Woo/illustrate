@@ -6,10 +6,6 @@ from rest_framework.response import Response
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer
 from .models import Profile
 from .permissions import CustomReadOnly
-<<<<<<< HEAD
-=======
-
->>>>>>> e9ae3b523566da25597a16b68da2b86a584fd8e0
 
 # Create your views here.
 
