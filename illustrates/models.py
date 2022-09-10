@@ -11,6 +11,7 @@ class Illustrates(models.Model):
     profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, verbose_name='작가 프로필')
     image = models.ImageField(verbose_name='일러스트')
+    title = models.CharField(max_length=128, verbose_name='작품명')
     category = models.CharField(max_length=128, verbose_name='카테고리')
     description = models.TextField(verbose_name='작품 설명')
     purchase_number = models.IntegerField(verbose_name='구매수')
