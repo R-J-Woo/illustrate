@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class IllustrateConfig(AppConfig):
+class IllustratesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'illustrate'
+    name = 'illustrates'

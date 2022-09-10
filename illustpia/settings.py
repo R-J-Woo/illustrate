@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'users',
-    'illustrate',
+    'illustrates',
 ]
 
 MIDDLEWARE = [
@@ -126,11 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-<<<<<<< HEAD
 MEDIA_URL = 'media/'
-=======
-MEDIA_URL = '/media/'
->>>>>>> e9ae3b523566da25597a16b68da2b86a584fd8e0
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
