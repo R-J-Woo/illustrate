@@ -4,6 +4,7 @@ from .models import Illustrates
 from .serializers import IllustCreateSerializer, IllustSerializer
 from .permissions import CustomReadOnly
 from users.models import Profile
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
@@ -11,6 +12,8 @@ from users.models import Profile
 class IllustViewSet(viewsets.ModelViewSet):
     queryset = Illustrates.objects.all()
     permission_classes = [CustomReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['illustrator', 'likes']
 
     def get_serializer_class(self):
         if self.action == 'list' or 'retrieve':
