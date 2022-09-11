@@ -20,3 +20,11 @@ class Illustrates(models.Model):
     price = models.IntegerField(verbose_name='작품 가격')
     register_date = models.DateTimeField(
         auto_now_add=True, verbose_name='등록 날짜')
+
+
+class Review(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    illustrate = models.ForeignKey(
+        Illustrates, on_delete=models.CASCADE, related_name='reviews')
+    text = models.TextField()

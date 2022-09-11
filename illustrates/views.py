@@ -4,8 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import generics, viewsets
-from .models import Illustrates
-from .serializers import IllustCreateSerializer, IllustSerializer
+from .models import Illustrates, Review
+from .serializers import IllustCreateSerializer, IllustSerializer, ReviewSerializer, ReviewCreateSerializer
 from .permissions import CustomReadOnly
 from users.models import Profile
 from django_filters.rest_framework import DjangoFilterBackend
@@ -39,3 +39,17 @@ def like_illustrate(request, pk):
         illustrate.likes.add(request.user)
 
     return Response({'status': 'ok'})
+
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    permission_classes = [CustomReadOnly]
+
+    def get_serializer_class(self):
+        if self.action == 'list' or 'retrieve':
+            return ReviewSerializer
+        return ReviewCreateSerializer
+
+    def perform_create(self, serializer):
+        profile = Profile.objects.get(user=self.request.user)
+        serializer.save(author=self.request.user, profile=profile)
